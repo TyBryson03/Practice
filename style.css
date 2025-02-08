@@ -153,23 +153,51 @@ body {
   */
   .final-container {
     text-align: center;
-    padding: 2rem;
-    /* Semi-opaque pink overlay */
-    background-color: rgba(255, 192, 203, 0.3);
-    min-height: 100vh;
-    position: relative;
-    z-index: 1; /* So it also floats above the falling hearts */
+  padding: 0;
+  min-height: 100vh;
+  display: flex;              /* Enable flexbox */
+  justify-content: center;    /* Center horizontally */
+  align-items: center;        /* Center vertically */
+  position: relative;
+  z-index: 1;
+  
+    /* Background image settings */
+    background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
+    url("photos/collage.png");
+    background-size: cover;       /* Cover the entire screen while keeping proportions */
+    
+    
+    /* Animation */
+    animation: scrollBackground 30s linear infinite;
+  }
+  
+  /* Keyframes for vertical scrolling */
+  @keyframes scrollBackground {
+    0% {
+      background-position: 0 100%;
+    }
+    100% {
+      background-position: 0 0;
+    }
+  }
+  
+  
+  .final-message {
+    font-family: 'Lobster', cursive;  /* Use your chosen font */
+    color: black;                   /* Valentine pink text color */
+    font-size: 3rem;                  /* Make the heading large */
+    text-align: center;
   }
   
   .final-message h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-  }
-  .final-message p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 4rem;   /* Make the heading much larger */
+    margin: 0.5rem 0;
   }
   
+  .final-message p {
+    font-size: 2rem;   /* Increase paragraph size */
+    margin: 1rem 0;
+  }
   /* Photo gallery layout */
   .photo-gallery {
     display: flex;
@@ -181,4 +209,22 @@ body {
     margin: 0.5rem;
     border: 2px solid #fff;
   }
+  /* The flash effect overlay */
+/* The flash effect overlay */
+.white-flash {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0;
+  z-index: 9999;  /* Make sure it’s on top of everything */
+  pointer-events: none;  /* So it doesn't block any clicks */
+
+  /* Only transition for fade-out, NOT for fade-in */
+  transition: opacity 1.5s ease-out;
+}
+
+
   

@@ -1,37 +1,58 @@
 let inflationCount = 0;
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const heart = document.getElementById("heart");
+const valentinesContainer = document.getElementById("valentinesContainer");
+const finalContainer = document.getElementById("finalContainer");
 
-window.onload = function() {
-  const yesBtn = document.getElementById("yesBtn");
-  const noBtn = document.getElementById("noBtn");
-  const heart = document.getElementById("heart");
-  const valentinesContainer = document.getElementById("valentinesContainer");
-  const finalContainer = document.getElementById("finalContainer");
+// Create flash overlay and append it to the body
+const flashOverlay = document.createElement("div");
+flashOverlay.classList.add("white-flash");
+document.body.appendChild(flashOverlay);
 
-  // YES button logic
-  yesBtn.addEventListener("click", () => {
-    inflationCount++;
-    // Increase heart size
-    heart.style.transform = `scale(${1 + inflationCount * 0.2})`;
+// YES button logic
+yesBtn.addEventListener("click", () => {
+  inflationCount++;
+  heart.style.transform = `scale(${1 + inflationCount * 0.2})`;
 
-    // Once inflated 3 times, pop and go to final page
-    if (inflationCount === 3) {
-      // "Pop" effect - you can do a quick class toggle or an animation
+  // Once inflated 3 times, trigger the flash effect and transition
+  if (inflationCount === 3) {
+    // Add a short delay to simulate the "pop" before the flash
+    setTimeout(() => {
+      flashOverlay.style.opacity = "1";  // Flash to white
+
+      // After the flash, switch to the final page
       setTimeout(() => {
         valentinesContainer.style.display = "none";
         finalContainer.style.display = "block";
-      }, 500); // short delay after final click
-    }
-  });
+        flashOverlay.style.opacity = "0";  // Reset flash (optional)
+      }, 2000);  // Adjust this to control the length of the flash
+    }, 0);  // Delay to match the "pop" effect
+  }
+});
+
 
   // NO button logic
   // Example: reprompt or show a silly alert
   noBtn.addEventListener("click", () => {
-    alert("Aww, come on! Give it a second thought...");
+  random = Math.floor(Math.random() * 4);
+  if (random == 0) {
+    noBtn.innerText = "please...";
+  }
+  if (random == 1) {
+    noBtn.inenerText = "click yes";
+  }
+  if (random == 2) {
+    noBtn.innerText = "that was rude";
+  }
+  if (random == 3) {
+  noBtn.innerText = "wrong answer";
+  }
     // Could relocate the "No" button or do something else quirky
   });
   createFallingHearts(40);
 
-};
+
 
 function createFallingHearts(count) {
     const heartsContainer = document.getElementById("heartsBackground");
