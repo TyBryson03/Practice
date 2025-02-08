@@ -4,6 +4,7 @@ const noBtn = document.getElementById("noBtn");
 const heart = document.getElementById("heart");
 const valentinesContainer = document.getElementById("valentinesContainer");
 const finalContainer = document.getElementById("finalContainer");
+const heartBackground = document.getElementById("heartsBackground");
 
 // Create flash overlay and append it to the body
 const flashOverlay = document.createElement("div");
@@ -23,7 +24,7 @@ yesBtn.addEventListener("click", () => {
 
       // After the flash, switch to the final page
       setTimeout(() => {
-        valentinesContainer.style.display = "none";
+        heartBackground.style.display = "none";
         finalContainer.style.display = "block";
         flashOverlay.style.opacity = "0";  // Reset flash (optional)
       }, 2000);  // Adjust this to control the length of the flash

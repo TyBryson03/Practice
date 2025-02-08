@@ -151,53 +151,88 @@ body {
     5) FINAL PAGE CONTAINER (hidden at first)
     =========================================
   */
-  .final-container {
-    text-align: center;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;              /* Enable flexbox */
-  justify-content: center;    /* Center horizontally */
-  align-items: center;        /* Center vertically */
+  /* FINAL PAGE CONTAINER */
+.final-container {
   position: relative;
+  min-height: 100vh;
+  overflow: hidden; /* Hide any overflow from the scrolling image */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   z-index: 1;
+  padding: 1rem; /* optional spacing */
+}
+
+/* SCROLLING BACKGROUND CONTAINER */
+.scrolling-background {
+  position: absolute;  /* So it sits behind the text */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;        /* Fill the container */
+  z-index: -1;         /* Below the .final-message */
+  overflow: hidden;    /* Keep the image fully contained */
+}
+
+/* THE IMAGE ITSELF */
+.collage-img {
+  display: block;
+  width: 100%;     /* Responsive to screen width */
+  height: auto;    /* Maintain aspect ratio */
   
-    /* Background image settings */
-    background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
-    url("photos/collage.png");
-    background-size: cover;       /* Cover the entire screen while keeping proportions */
-    background-repeat: repeat-y;  /* Optional: keeps background fixed during scrolling */
-    
-    /* Animation */
-    animation: scrollBackground 30s linear infinite;
+  /* Animate from top -> bottom, a.k.a. "north to south" */
+  animation: scrollCollage 4s linear infinite;
+}
+
+/* KEYFRAMES: top to bottom */
+@keyframes scrollCollage {
+  0% {
+    transform: translateY(-10%);  /* Start partially above the container */
   }
-  
-  /* Keyframes for vertical scrolling */
-  @keyframes scrollBackground {
-    0% {
-      background-position: 0 100%;
-    }
-    100% {
-      background-position: 0 0;
-    }
+  100% {
+    transform: translateY(0%);    /* End fully within the container */
   }
+}
+
+/* TRANSLUCENT WHITE OVERLAY */
+.scrolling-background::after {
+  content: "";
+  position: absolute;  
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   
+  /* Adjust the opacity as desired; 0.3 = 30% white, 0.5 = 50%, etc. */
+  background-color: rgba(255, 255, 255, 0.4);
+
+  /* Ensures clicks pass through (not blocking the final-message) */
+  pointer-events: none;
   
-  .final-message {
-    font-family: 'Lobster', cursive;  /* Use your chosen font */
-    color: black;                   /* Valentine pink text color */
-    font-size: 3rem;                  /* Make the heading large */
-    text-align: center;
-  }
-  
-  .final-message h2 {
-    font-size: 4rem;   /* Make the heading much larger */
-    margin: 0.5rem 0;
-  }
-  
-  .final-message p {
-    font-size: 2rem;   /* Increase paragraph size */
-    margin: 1rem 0;
-  }
+  /* Sits above the image but behind your text */
+  z-index: 1;
+}
+
+/* FINAL MESSAGE STYLES */
+.final-message {
+  font-family: 'Lobster', cursive;
+  color: black;
+  font-size: 3rem;
+  text-align: center;
+}
+
+.final-message h2 {
+  font-size: 4rem;
+  margin: 0.5rem 0;
+}
+
+.final-message p {
+  font-size: 2rem;
+  margin: 1rem 0;
+}
+
   /* Photo gallery layout */
   .photo-gallery {
     display: flex;
