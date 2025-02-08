@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Will You Be My Valentine?</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Main Container -->
+  <div class="valentines-container" id="valentinesContainer">
+    <h1>Will You Be My Valentine?</h1>
+
+    <div class="button-row">
+      <button id="yesBtn">Yes</button>
+      <button id="noBtn">No</button>
+    </div>
+
+    <!-- Heart (you can swap in an <img> if you want a real heart image) -->
+    <div class="heart" id="heart"></div>
+  </div>
+
+  <!-- Final Page Container (initially hidden) -->
+  <div class="final-container" id="finalContainer" style="display: none;">
+    <div class="final-message">
+      <h2>Can’t wait for another Valentine’s day with you!</h2>
+      <p>I love you!</p>
+    </div>
+    <!-- Photo gallery or photo scroller -->
+    <div class="photo-gallery">
+      <!-- Add as many images as you want -->
+      <img src="photos/pic1.jpg" alt="Us 1" />
+      <img src="photos/pic2.jpg" alt="Us 2" />
+      <img src="photos/pic3.jpg" alt="Us 3" />
+      <!-- etc... -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

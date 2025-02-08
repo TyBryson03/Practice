@@ -1,0 +1,100 @@
+/* style.css */
+
+/* Make the page fill the screen with a white background */
+body.blank-page {
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Center content in the middle of the page */
+  .center-content {
+    text-align: center;
+  }
+/* -- Valentines Page Styles -- */
+.valentines-container {
+    text-align: center;
+    margin-top: 2rem;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Button Row */
+  .button-row {
+    margin: 1rem 0;
+  }
+  .button-row button {
+    margin: 0 1rem;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  /* The Heart (CSS-based) */
+  .heart {
+    width: 100px;
+    height: 90px;
+    background-color: red;
+    display: inline-block;
+    position: relative;
+    margin-top: 2rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .heart:before,
+  .heart:after {
+    content: "";
+    width: 100px;
+    height: 90px;
+    background-color: red;
+    position: absolute;
+    border-radius: 50%;
+  }
+  
+  .heart:before {
+    top: -45px;
+    left: 0;
+  }
+  
+  .heart:after {
+    left: 50px;
+    top: 0;
+  }
+  
+  /* Final Page Styles */
+  .final-container {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    padding: 2rem;
+  }
+  
+  /* Semi-opaque background for the final page */
+  .final-container {
+    background-color: rgba(255, 192, 203, 0.3); /* pinkish + opacity */
+    min-height: 100vh;
+  }
+  
+  .final-message h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .final-message p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Photo gallery can be a simple horizontal or vertical list */
+  .photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .photo-gallery img {
+    max-width: 300px;
+    margin: 0.5rem;
+    border: 2px solid #fff;
+  }
+    
