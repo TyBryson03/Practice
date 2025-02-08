@@ -30,6 +30,7 @@ body.blank-page {
     margin: 0 1rem;
     padding: 1rem 2rem;
     font-size: 1rem;
+    border-radius: 10px;
     cursor: pointer;
   }
   
