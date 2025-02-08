@@ -165,7 +165,7 @@ body {
     background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), 
     url("photos/collage.png");
     background-size: cover;       /* Cover the entire screen while keeping proportions */
-    
+    background-repeat: repeat-y;  /* Optional: keeps background fixed during scrolling */
     
     /* Animation */
     animation: scrollBackground 30s linear infinite;
