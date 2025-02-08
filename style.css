@@ -8,7 +8,7 @@ body {
     padding: 0;
     font-family: 'Lobster';
     overflow-x: hidden;
-    font-size: xx-large;  /* Prevent horizontal scroll if hearts appear off-screen */
+    font-size: 16px;  /* Prevent horizontal scroll if hearts appear off-screen */
   }
   
   /* If you still need the 'blank-page' style for your index.html, it stays here: */
@@ -44,8 +44,8 @@ body {
   .falling-heart {
     position: absolute;
     top: -100%;
-    width: 500px;
-    height: 500px;
+    width: 100px;
+    height: 100px;
   
     /* If you're using a background image: */
     background-image: url("photos/falling-heart.png");
@@ -102,8 +102,8 @@ body {
     font-size: 1rem;
     border-radius: 10px;
     cursor: pointer;
-    border: none;          /* remove default border */
-    background-color: #ff69b4;
+    border: none;        /* remove default border */
+    background-color: #f16688;
     color: #fff;
     transition: background-color 0.3s ease;
   }
