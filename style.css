@@ -1,7 +1,18 @@
-/* style.css */
-
-/* Make the page fill the screen with a white background */
-body.blank-page {
+/* 
+  =========================================
+  1) GLOBAL / BODY
+  =========================================
+*/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lobster';
+    overflow-x: hidden;
+    font-size: xx-large;  /* Prevent horizontal scroll if hearts appear off-screen */
+  }
+  
+  /* If you still need the 'blank-page' style for your index.html, it stays here: */
+  body.blank-page {
     background-color: #fff;
     margin: 0;
     padding: 0;
@@ -11,20 +22,79 @@ body.blank-page {
     align-items: center;
   }
   
-  /* Center content in the middle of the page */
   .center-content {
     text-align: center;
   }
-/* -- Valentines Page Styles -- */
-.valentines-container {
-    text-align: center;
-    margin-top: 2rem;
-    font-family: Arial, sans-serif;
+  
+  /*
+    =========================================
+    2) HEARTS BACKGROUND
+    =========================================
+  */
+  /* NEW container for the pink background + falling hearts */
+  .hearts-background {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #ffc0cb; /* light pink, or your choice */
+    overflow: hidden;
+  }
+  
+  /* Each falling heart is a simple div with a background image */
+  .falling-heart {
+    position: absolute;
+    top: -100%;
+    width: 500px;
+    height: 500px;
+  
+    /* If you're using a background image: */
+    background-image: url("photos/falling-heart.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  
+    /* Animation */
+    animation: fall 8s linear infinite;
+  }
+  
+  @keyframes fall {
+    0% {
+      top: -100%;
+      opacity: 1;
+    }
+    80% {
+      opacity: 1;
+    }
+    100% {
+      top: 110%; /* goes off bottom of screen */
+      opacity: 0;
+    }
+  }
+  
+  
+  
+  /*
+    =========================================
+    3) VALENTINE CONTAINER
+    =========================================
+  */
+  .valentines-container {
+    
+    display: flex;               /* enables flex layout */
+    flex-direction: column;      /* stack items vertically (title, buttons, heart) */
+    justify-content: center;     /* center them along the vertical axis */
+    align-items: center;         /* center them along the horizontal axis */
+    min-height: 100vh;           /* ensure it takes the full browser height */
+    position: relative;          /* keep your z-index if needed */
+    z-index: 1;
+    text-align: center;          /* optional: keep text centered */
+    margin: 0;                   /* remove default margin if any */
+    padding: 0;      
   }
   
   /* Button Row */
   .button-row {
-    margin: 1rem 0;
+    margin: 3rem 0;
   }
   .button-row button {
     margin: 0 1rem;
@@ -32,9 +102,20 @@ body.blank-page {
     font-size: 1rem;
     border-radius: 10px;
     cursor: pointer;
+    border: none;          /* remove default border */
+    background-color: #ff69b4;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  .button-row button:hover {
+    background-color: #ff85c3; /* lighten on hover if desired */
   }
   
-  /* The Heart (CSS-based) */
+  /*
+    =========================================
+    4) INTERACTIVE HEART (Yes button effect)
+    =========================================
+  */
   .heart {
     width: 100px;
     height: 90px;
@@ -65,17 +146,19 @@ body.blank-page {
     top: 0;
   }
   
-  /* Final Page Styles */
+  /*
+    =========================================
+    5) FINAL PAGE CONTAINER (hidden at first)
+    =========================================
+  */
   .final-container {
     text-align: center;
-    font-family: Arial, sans-serif;
     padding: 2rem;
-  }
-  
-  /* Semi-opaque background for the final page */
-  .final-container {
-    background-color: rgba(255, 192, 203, 0.3); /* pinkish + opacity */
+    /* Semi-opaque pink overlay */
+    background-color: rgba(255, 192, 203, 0.3);
     min-height: 100vh;
+    position: relative;
+    z-index: 1; /* So it also floats above the falling hearts */
   }
   
   .final-message h2 {
@@ -87,7 +170,7 @@ body.blank-page {
     margin-bottom: 2rem;
   }
   
-  /* Photo gallery can be a simple horizontal or vertical list */
+  /* Photo gallery layout */
   .photo-gallery {
     display: flex;
     flex-wrap: wrap;
@@ -98,4 +181,4 @@ body.blank-page {
     margin: 0.5rem;
     border: 2px solid #fff;
   }
-    
+  
